@@ -3,6 +3,8 @@ from pymongo import MongoClient
 from bson import ObjectId
 import json
 import logging
+import os
+import time
 
 app = Flask(__name__)
 try:
@@ -16,41 +18,13 @@ except Exception as e:
 
 logging.basicConfig(level=logging.DEBUG)
 
-# Define the hospital schema
+# Define a simple schema
 hospital_schema = {
-    "hospital_id": ObjectId,
     "name": str,
-    "address": {
-        "street": str,
-        "city": str,
-        "state": str,
-        "zip_code": str
-    },
-    "contact": {
-        "phone": str,
-        "email": str
-    },
-    "doctors": [
-        {
-            "name": str,
-            "specialization": str,
-            "department": str,
-            "contact": {
-                "phone": str,
-                "email": str
-            }
-        }
-    ],
-    "patients": [
-        {
-            "name": str,
-            "age": int,
-            "gender": str,
-            "admission_date": str,
-            "doctor": str,
-            "condition": str
-        }
-    ]
+    "address": str,
+    "contact": str,
+    "doctor": str,
+    "patient": str
 }
 
 @app.route('/')
@@ -64,14 +38,26 @@ def synchronize():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
+        start_time = time.time()
         file = request.files['jsonFile']
         if file.filename.endswith('.json'):
+            # Get the size of the uploaded file
+            file_size = os.path.getsize(file.filename)
             data = json.load(file)
-            # Iterate over each document in the JSON data and insert into MongoDB collection
-            for document in data:
-                collection.insert_one(document)
-            logging.info("Hospital data stored in the database")
-            return jsonify({'message': 'Hospital data stored in the database'})
+            if isinstance(data, list):
+                for document in data:
+                    if isinstance(document, dict):
+                        collection.insert_one(document)
+                    else:
+                        raise ValueError("Document must be a dictionary")
+            else:
+                raise ValueError("Data must be a list of dictionaries")
+            end_time = time.time()
+            upload_time = end_time - start_time
+            # Convert bytes to kilobytes
+            file_size_kb = file_size / 1024
+            logging.info("Hospital data Uploaded Successfully !")
+            return jsonify({'message': 'Hospital data Uploaded Successfully !', 'upload_time': upload_time, 'file_size': file_size_kb})
         else:
             logging.error("Invalid file format")
             return jsonify({'error': 'Invalid file format'})
@@ -92,6 +78,6 @@ def retrieve_data():
     except Exception as e:
         logging.error("Error retrieving hospital data from the database: %s", e)
         return jsonify({'error': 'Error retrieving hospital data from the database'})
-    
+
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')

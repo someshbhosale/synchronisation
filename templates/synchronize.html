@@ -17,27 +17,50 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-        .logo {
-			width: 75px;
-			height: 80px;
-		}
+        body {
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.9) url('/static/assests/bgimg.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .hospital-logo {
+            width: 90px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .hospital-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333; /* Dark gray color */
+            margin-bottom: 10px;
+        }
+
+        .hospital-tagline {
+            font-size: 15px;
+            color: #555; /* Medium gray color */
+            margin-bottom: 20px;
+        }
     </style>
 </head>
-<body><br>
-    <div class="text-center">
-		<img src="/static/assests/logo.jpg" class="logo" alt="Logo">
-		<h5>B.V.V.Sangha's</h5>
-		<h3><b>BASAVESHWAR ENGINEERING COLLEGE, BAGALKOTE</b></h3>
-		<p class="institute-details">(An Autonomous Institute, Affiliated to Visvesvaraya Technological University, Belagavi) Karnataka State, India</p>
-		<h3><b>DEPARTMENT OF INFORMATION SCIENCE AND ENGINEERING</b></h3>
-	</div>
-    <br><br>
-    <div class="container">
-        <h1>Retrieved Data</h1>
-        <div id="dataContainer"></div>
-        <button id="syncButton" class="btn btn-primary">Synchronize</button>
+<body>
+    <div class="container"> 
+        <div class="text-center">
+            <img src="/static/assests/logo.jpg" alt="Hospital Logo" class="hospital-logo">
+            <h1 class="hospital-title">Apollo Hospital</h1>
+            <p class="hospital-tagline">Your Trusted Healthcare Provider</p>
+        </div>
+        <div class="container">
+            <h1>Retrieved Data</h1>
+            <div id="dataContainer"></div>
+            <button id="syncButton" class="btn btn-primary">Synchronize</button>
+        </div>
     </div>
-
     <!-- Link directly to the jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>

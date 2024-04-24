@@ -1,90 +1,14 @@
 [
-    {
-      "hospital_id": "6159a6a5c7875a9fb7e3d0e9",
+  {
+      "hospital_id": "1",
       "name": "Hospital A",
-      "address": {
-        "street": "123 Main Street",
-        "city": "City A",
-        "state": "State A",
-        "zip_code": "12345"
-      },
-      "contact": {
-        "phone": "123-456-7890",
-        "email": "hospitala@example.com"
-      },
+      "address": "123 Main St, City A, State A, 12345",
+      "contact": "123-456-7890, info@hospitalA.com",
       "doctors": [
-        {
-          "name": "Dr. John Smith",
-          "specialization": "Cardiology",
-          "department": "Cardiology",
-          "contact": {
-            "phone": "111-222-3333",
-            "email": "johnsmith@example.com"
-          }
-        },
-        {
-          "name": "Dr. Sarah Johnson",
-          "specialization": "Neurology",
-          "department": "Neurology",
-          "contact": {
-            "phone": "444-555-6666",
-            "email": "sarahjohnson@example.com"
-          }
-        }
+          "Dr. John Smith, Cardiology, Cardiology, 111-222-3333, john.smith@hospitalA.com"
       ],
       "patients": [
-        {
-          "name": "Patient 1",
-          "age": 45,
-          "gender": "Male",
-          "admission_date": "2023-10-01",
-          "doctor": "Dr. John Smith",
-          "condition": "Heart Disease"
-        },
-        {
-          "name": "Patient 2",
-          "age": 60,
-          "gender": "Female",
-          "admission_date": "2023-11-15",
-          "doctor": "Dr. Sarah Johnson",
-          "condition": "Stroke"
-        }
+          "Patient 1, 30, Male, 2024-04-26, Dr. John Smith, Heart Disease"
       ]
-    },
-    {
-      "hospital_id": "6159a6a5c7875a9fb7e3d0ea",
-      "name": "Hospital B",
-      "address": {
-        "street": "456 Oak Street",
-        "city": "City B",
-        "state": "State B",
-        "zip_code": "54321"
-      },
-      "contact": {
-        "phone": "987-654-3210",
-        "email": "hospitalb@example.com"
-      },
-      "doctors": [
-        {
-          "name": "Dr. Michael Brown",
-          "specialization": "Orthopedics",
-          "department": "Orthopedics",
-          "contact": {
-            "phone": "777-888-9999",
-            "email": "michaelbrown@example.com"
-          }
-        }
-      ],
-      "patients": [
-        {
-          "name": "Patient 3",
-          "age": 35,
-          "gender": "Female",
-          "admission_date": "2023-09-20",
-          "doctor": "Dr. Michael Brown",
-          "condition": "Fractured Leg"
-        }
-      ]
-    }
-  ]
-  
+  }
+]
