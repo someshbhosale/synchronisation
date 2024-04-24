@@ -5,9 +5,14 @@ import json
 import logging
 
 app = Flask(__name__)
-client = MongoClient('mongodb+srv://someshbhosale2:somesh@cluster0.atanct9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
-db = client['synchronisation']  # Database name
-collection = db['hospitalData']  # Collection name
+try:
+    # Attempt to connect to the MongoDB Atlas cluster
+    client = MongoClient('mongodb+srv://someshbhosale2:somesh@cluster0.atanct9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    db = client['synchronisation']  # Database name
+    collection = db['hospitalData']
+    print("Connected to MongoDB Atlas successfully!")
+except Exception as e:
+    print("Error connecting to MongoDB Atlas:", e)
 
 logging.basicConfig(level=logging.DEBUG)
 
