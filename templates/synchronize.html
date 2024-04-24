@@ -19,7 +19,7 @@
             word-wrap: break-word;
         }
         body {
-            padding: 50px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.9) url('/static/assests/bgimg.jpg') no-repeat center center fixed;
             background-size: cover;
         }
@@ -30,36 +30,45 @@
         }
 
         .hospital-logo {
-            width: 90px;
+            width: 10vw; /* Adjusted for responsiveness */
+            max-width: 90px;
             height: auto;
             margin-bottom: 20px;
         }
 
         .hospital-title {
-            font-size: 32px;
+            font-size: 2.5vw; /* Adjusted for responsiveness */
             font-weight: bold;
             color: #333; /* Dark gray color */
-            margin-bottom: 10px;
+            margin-bottom: 1vw; /* Adjusted for responsiveness */
         }
 
         .hospital-tagline {
-            font-size: 15px;
+            font-size: 1.25vw; /* Adjusted for responsiveness */
             color: #555; /* Medium gray color */
-            margin-bottom: 20px;
+            margin-bottom: 2vw; /* Adjusted for responsiveness */
         }
     </style>
 </head>
 <body>
-    <div class="container"> 
-        <div class="text-center">
-            <img src="/static/assests/logo.png" alt="Hospital Logo" class="hospital-logo">
-            <h1 class="hospital-title">Apollo Hospital</h1>
-            <p class="hospital-tagline">Your Trusted Healthcare Provider</p>
+    <div class="container"> <!-- Added Bootstrap container -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <img src="/static/assests/logo.png" alt="Hospital Logo" class="hospital-logo">
+                <h1 class="hospital-title">Apollo Hospital</h1>
+                <p class="hospital-tagline">Your Trusted Healthcare Provider</p>
+            </div>
         </div>
-        <div class="container">
-            <h1>Retrieved Data</h1>
-            <div id="dataContainer"></div>
-            <button id="syncButton" class="btn btn-primary">Synchronize</button>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="container">
+                    <h4 class="text-center">Retrieved Data</h4>
+                    <div id="dataContainer"></div>
+                </div>
+                <div class="text-center">
+                    <button id="syncButton" class="btn btn-primary">Synchronize</button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Link directly to the jQuery CDN -->
